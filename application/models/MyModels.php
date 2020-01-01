@@ -21,4 +21,10 @@ class MyModels extends CI_Model
 		$this->db->where('id',$id);
 		return $this->db->get('mahasiswa')->row_array();
 	}
+
+	public function ubah_data($id,$data)
+	{
+		$this->db->where('id',$id);
+		return $this->db->update('mahasiswa',$data);
+	}
 }

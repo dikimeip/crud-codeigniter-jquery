@@ -61,6 +61,8 @@
 				<div class="form-group">
 					<label>Masukan Nama</label>
 					<input type="text" name="namaa" class="form-control" required="">
+					<input type="hidden" name="id" class="form-control" >
+
 				</div>
 				<div class="form-group">
 					<label>Masukan Kelas</label>
@@ -131,13 +133,34 @@
 				$("[name='namaa']").val(data.nama)
 				$("[name='kelass']").val(data.kelas)
 				$("[name='alamatt']").val(data.alamat)
-				
+				$("[name='id']").val(data.id)
 			}
 		})
 	}
 
 	function updateData() {
-		
+		var nama = $("[name='namaa']").val();
+		var kelas = $("[name='kelass']").val();
+		var alamat = $("[name='alamatt']").val();
+		var id = $("[name='id']").val();
+		if (nama == "" || kelas == "" || alamat == "") {
+			console.log('gagal')
+		} else {
+			$.ajax({
+				type:'POST',
+				data : "id="+id+"&nama="+nama+"&kelas="+kelas+"&alamat="+alamat,
+				dataType:'json',
+				url:"<?php echo base_url('CrudController/do_edit') ?>",
+				success:function (data) {
+					if (data.status == 1) {
+						$("#edit").modal('hide')
+						onload()
+					} else {
+						console.log(data.data)
+					}
+				}
+			})
+		}
 	}
 </script>
 

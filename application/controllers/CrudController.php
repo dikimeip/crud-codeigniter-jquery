@@ -64,4 +64,28 @@ class CrudController extends CI_Controller
 		$query = $this->Model->show_datas($id);
 		echo json_encode($query);
 	}
+
+	public function do_edit()
+	{
+		$data = [
+			'nama' => $this->input->post('nama'),
+			'kelas' => $this->input->post('kelas'),
+			'alamat' => $this->input->post('alamat'),
+		];
+		$id = $this->input->post('id');
+		$query = $this->Model->ubah_data($id,$data);
+		if ($query) {
+			$res = [
+				'status' => 1,
+				'data' => 'Inpt Data Finish'
+			];
+		} else {
+			$res = [
+				'status' => 0,
+				'data' => 'Inpt Data Vailed'
+			];
+		}
+
+		echo json_encode($res);
+	}
 }
