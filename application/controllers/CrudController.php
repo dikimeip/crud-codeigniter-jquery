@@ -11,4 +11,9 @@ class CrudController extends CI_Controller
 		parent::__construct();
 		$this->load->model('MyModels','Model');
 	}
+
+	public function index()
+	{
+		$this->load->view('dasboard');
+	}
 }
