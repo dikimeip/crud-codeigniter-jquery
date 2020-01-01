@@ -27,4 +27,10 @@ class MyModels extends CI_Model
 		$this->db->where('id',$id);
 		return $this->db->update('mahasiswa',$data);
 	}
+
+	public function hapus($id)
+	{
+		$this->db->where('id',$id);
+		return $this->db->delete('mahasiswa');
+	}
 }

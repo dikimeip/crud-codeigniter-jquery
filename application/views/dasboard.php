@@ -92,7 +92,7 @@
 			success : function(data) {
 				var tampil = ""
 				for (var i = 0; i < data.data.length; i++) {
-					tampil += "<tr><td>"+data.data[i].nama+"</td><td>"+data.data[i].kelas+"</td><td>"+data.data[i].alamat+"</td><td><button class='btn btn-danger btn-sm'>HAPUS</button> <button onclick='editData("+data.data[i].id+")' class='btn btn-success btn-sm'>EDIT</button></td></tr>"
+					tampil += "<tr><td>"+data.data[i].nama+"</td><td>"+data.data[i].kelas+"</td><td>"+data.data[i].alamat+"</td><td><button onclick='hapusData("+data.data[i].id+")' class='btn btn-danger btn-sm'>HAPUS</button> <button onclick='editData("+data.data[i].id+")' class='btn btn-success btn-sm'>EDIT</button></td></tr>"
 				}
 				$("#body").html(tampil)
 			}
@@ -154,6 +154,25 @@
 				success:function (data) {
 					if (data.status == 1) {
 						$("#edit").modal('hide')
+						onload()
+					} else {
+						console.log(data.data)
+					}
+				}
+			})
+		}
+	}
+
+	function hapusData(id) {
+		var konf = confirm('Hapus Data..??')
+		if (konf) {
+			$.ajax({
+				type:'POST',
+				data:'id='+id,
+				url:'<?php echo base_url('CrudController/hapus') ?>',
+				dataType:'json',
+				success:function (data) {
+					if (data.status == 1) {
 						onload()
 					} else {
 						console.log(data.data)

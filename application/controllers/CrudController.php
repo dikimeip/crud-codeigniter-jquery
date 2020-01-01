@@ -88,4 +88,23 @@ class CrudController extends CI_Controller
 
 		echo json_encode($res);
 	}
+
+	public function hapus()
+	{
+		$id = $this->input->post('id');
+		$query = $this->Model->hapus($id);
+		if ($query) {
+			$res = [
+				'status' => 1,
+				'data' => 'Inpt Data Finish'
+			];
+		} else {
+			$res = [
+				'status' => 0,
+				'data' => 'Inpt Data Vailed'
+			];
+		}
+
+		echo json_encode($res);
+	}
 }
