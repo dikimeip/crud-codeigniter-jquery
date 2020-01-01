@@ -15,4 +15,10 @@ class MyModels extends CI_Model
 	{
 		return $this->db->insert('mahasiswa',$data);
 	}
+
+	public function show_datas($id)
+	{
+		$this->db->where('id',$id);
+		return $this->db->get('mahasiswa')->row_array();
+	}
 }

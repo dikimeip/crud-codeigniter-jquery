@@ -57,4 +57,11 @@ class CrudController extends CI_Controller
 		echo json_encode($res);
 		
 	}
+
+	public function edit_data()
+	{
+		$id = $this->input->post('id');
+		$query = $this->Model->show_datas($id);
+		echo json_encode($query);
+	}
 }

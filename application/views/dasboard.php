@@ -62,7 +62,7 @@
 			success : function(data) {
 				var tampil = ""
 				for (var i = 0; i < data.data.length; i++) {
-					tampil += "<tr><td>"+data.data[i].nama+"</td><td>"+data.data[i].kelas+"</td><td>"+data.data[i].alamat+"</td><td><button class='btn btn-danger btn-sm'>HAPUS</button> <button class='btn btn-success btn-sm'>EDIT</button></td></tr>"
+					tampil += "<tr><td>"+data.data[i].nama+"</td><td>"+data.data[i].kelas+"</td><td>"+data.data[i].alamat+"</td><td><button class='btn btn-danger btn-sm'>HAPUS</button> <button onclick='editData("+data.data[i].id+")' class='btn btn-success btn-sm'>EDIT</button></td></tr>"
 				}
 				$("#body").html(tampil)
 			}
@@ -90,7 +90,19 @@
 				}
 			})
 		}
-		
+	}
+
+	function editData(id) {
+		$("#modal").modal('show')
+		$.ajax({
+			type:'POST',
+			data : 'id='+id,
+			dataType:'json',
+			url:'<?php echo base_url('CrudController/edit_data') ?>',
+			success:function(data){
+				console.log(data)
+			}
+		})
 	}
 </script>
 
