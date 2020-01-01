@@ -36,12 +36,25 @@ class CrudController extends CI_Controller
 
 	public function tambah()
 	{
-		$nama = $this->input->post('nama');
-		$kelas = $this->input->post('kelas');
-		$alamat = $this->input->post('alamat');
-		echo json_encode($alamat);
-		// if (condition) {
-		// 	# code...
-		// }
+		$data = [
+			'nama' => $this->input->post('nama'),
+			'kelas' => $this->input->post('kelas'),
+			'alamat' => $this->input->post('alamat'),
+		];
+		$query = $this->Model->input_data($data);
+		if ($query) {
+			$res = [
+				'status' => 1,
+				'data' => 'Inpt Data Finish'
+			];
+		} else {
+			$res = [
+				'status' => 0,
+				'data' => 'Inpt Data Vailed'
+			];
+		}
+
+		echo json_encode($res);
+		
 	}
 }

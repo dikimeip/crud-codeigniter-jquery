@@ -29,7 +29,7 @@
 			<div class="modal-header">
 				<h3>TAMBAH MAHASISWA</h3>
 			</div>
-			<p id="pesan"></p>
+			<p id="pesan" class="text-center"></p>
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Masukan Nama</label>
@@ -75,14 +75,22 @@
 		var alamat = $("[name='alamat']").val();
 		var error = 'invalid'
 		if (nama == "" || kelas == "" ||alamat == "") {
-			console.log('error')
+			$("#pesan").html('Field Invalid Input')
+		} else {
+			$.ajax({
+				type : 'POST',
+				data : 'nama='+nama+'&kelas='+kelas+'&alamat='+alamat,
+				dataType:'json',
+				url:"<?php echo base_url('CrudController/tambah') ?>",
+				success:function(data){
+					if (data.status == 1) {
+						$("#modal").modal('hide')
+						onload()
+					}
+				}
+			})
 		}
-		// $.ajax({
-		// 	type : 'POST',
-		// 	data : 'nama='+nama+'&kelas='+kelas+'$alamat='+alamat,
-		// 	dataType:'json',
-		// 	url:"<?php echo base_url('CrudController/') ?>"
-		// })
+		
 	}
 </script>
 
