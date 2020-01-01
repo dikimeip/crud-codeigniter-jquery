@@ -8,6 +8,7 @@
 
 <div class="jumbotron">
 	<div class="container">
+		<button class="btn btn-info" data-target="#modal" data-toggle="modal" >TAMBAH</button><hr/>
 		<table class="table table-border">
 			<thead>
 				<tr>
@@ -21,6 +22,32 @@
 		</table>	
 	</div>
 	
+</div>
+<div class="modal fade" id="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>TAMBAH MAHASISWA</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Masukan Nama</label>
+					<input type="text" name="nama" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Masukan Kelas</label>
+					<input type="text" name="nama" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Masukan Alamat</label>
+					<input type="text" name="nama" class="form-control">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info">SIMPAN</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/jquery.js') ?>"></script>
