@@ -100,7 +100,9 @@
 			dataType:'json',
 			url:'<?php echo base_url('CrudController/edit_data') ?>',
 			success:function(data){
-				console.log(data)
+				$("[name='nama']").val(data.nama)
+				$("[name='kelas']").val(data.kelas)
+				$("[name='alamat']").val(data.alamat)
 			}
 		})
 	}
