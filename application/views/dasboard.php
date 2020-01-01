@@ -45,11 +45,39 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" onclick="tambahData()" >SIMPAN</button>
+				<button class="btn btn-info" id="simpanbtn" onclick="tambahData()" >SIMPAN</button>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="edit">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>UBAH MAHASISWA</h3>
+			</div>
+			<p id="pesan" class="text-center"></p>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Masukan Nama</label>
+					<input type="text" name="namaa" class="form-control" required="">
+				</div>
+				<div class="form-group">
+					<label>Masukan Kelas</label>
+					<input type="number" name="kelass" class="form-control" required="">
+				</div>
+				<div class="form-group">
+					<label>Masukan Alamat</label>
+					<input type="text" name="alamatt" class="form-control" required="">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="updatebtn" onclick="updateData()" >UPDATE</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/jquery.js') ?>"></script>
 <script>
@@ -93,18 +121,23 @@
 	}
 
 	function editData(id) {
-		$("#modal").modal('show')
+		$("#edit").modal('show')
 		$.ajax({
 			type:'POST',
 			data : 'id='+id,
 			dataType:'json',
 			url:'<?php echo base_url('CrudController/edit_data') ?>',
 			success:function(data){
-				$("[name='nama']").val(data.nama)
-				$("[name='kelas']").val(data.kelas)
-				$("[name='alamat']").val(data.alamat)
+				$("[name='namaa']").val(data.nama)
+				$("[name='kelass']").val(data.kelas)
+				$("[name='alamatt']").val(data.alamat)
+				
 			}
 		})
+	}
+
+	function updateData() {
+		
 	}
 </script>
 
