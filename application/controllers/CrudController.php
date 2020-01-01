@@ -16,4 +16,21 @@ class CrudController extends CI_Controller
 	{
 		$this->load->view('dasboard');
 	}
+
+	public function showData()
+	{
+		$data = $this->Model->get_mhs();
+		if ($data) {
+			$res = [
+				'status' => 1,
+				'data' => $data
+			];
+		} else {
+			$res = [
+				'status' => 0,
+				'data' => 'Get Data Filed'
+			];
+		}
+		echo json_encode($res);
+	}
 }
