@@ -29,22 +29,23 @@
 			<div class="modal-header">
 				<h3>TAMBAH MAHASISWA</h3>
 			</div>
+			<p id="pesan"></p>
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Masukan Nama</label>
-					<input type="text" name="nama" class="form-control">
+					<input type="text" name="nama" class="form-control" required="">
 				</div>
 				<div class="form-group">
 					<label>Masukan Kelas</label>
-					<input type="text" name="nama" class="form-control">
+					<input type="number" name="kelas" class="form-control" required="">
 				</div>
 				<div class="form-group">
 					<label>Masukan Alamat</label>
-					<input type="text" name="nama" class="form-control">
+					<input type="text" name="alamat" class="form-control" required="">
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info">SIMPAN</button>
+				<button class="btn btn-info" onclick="tambahData()" >SIMPAN</button>
 			</div>
 		</div>
 	</div>
@@ -55,7 +56,7 @@
 	onload()
 	function onload() {
 		$.ajax({
-			type:'POST',
+			type:'GET',
 			url : '<?php echo base_url('CrudController/showData') ?>',
 			dataType : 'json',
 			success : function(data) {
@@ -66,6 +67,22 @@
 				$("#body").html(tampil)
 			}
 		})
+	}
+
+	function tambahData() {
+		var nama = $("[name='nama']").val();
+		var kelas = $("[name='kelas']").val();
+		var alamat = $("[name='alamat']").val();
+		var error = 'invalid'
+		if (nama == "" || kelas == "" ||alamat == "") {
+			console.log('error')
+		}
+		// $.ajax({
+		// 	type : 'POST',
+		// 	data : 'nama='+nama+'&kelas='+kelas+'$alamat='+alamat,
+		// 	dataType:'json',
+		// 	url:"<?php echo base_url('CrudController/') ?>"
+		// })
 	}
 </script>
 

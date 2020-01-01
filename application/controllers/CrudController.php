@@ -33,4 +33,15 @@ class CrudController extends CI_Controller
 		}
 		echo json_encode($res);
 	}
+
+	public function tambah()
+	{
+		$nama = $this->input->post('nama');
+		$kelas = $this->input->post('kelas');
+		$alamat = $this->input->post('alamat');
+		echo json_encode($alamat);
+		// if (condition) {
+		// 	# code...
+		// }
+	}
 }
